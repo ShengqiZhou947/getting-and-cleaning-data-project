@@ -1,6 +1,4 @@
 ## R script for getting and cleaning data project
-## Author: Pradeep K. Pant
-## Load CRAN modules 
 library(downloader)
 library(plyr);
 library(knitr)
@@ -11,15 +9,15 @@ if(!file.exists("./projectData")){
   dir.create("./projectData")
   }
 Url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-## Check if zip has already been downloaded in projectData directory?
+
 if(!file.exists("./projectData/project_Dataset.zip")){
   download.file(Url,destfile="./projectData/project_Dataset.zip",mode = "wb")
   }
-## Check if zip has already been unzipped?
+
 if(!file.exists("./projectData/UCI HAR Dataset")){
   unzip(zipfile="./projectData/project_Dataset.zip",exdir="./projectData")
 }
-## List all the files of UCI HAR Dataset folder
+
 path <- file.path("./projectData" , "UCI HAR Dataset")
 files<-list.files(path, recursive=TRUE)
 ## The files that will be used to load data are listed as follows:
@@ -31,7 +29,7 @@ files<-list.files(path, recursive=TRUE)
 # train/y_train.txt
 
 ## Stpe 2: Load activity, subject and feature info.
-## Read data from the files into the variables
+
 
 ## 1. Read the Activity files
 ActivityTest  <- read.table(file.path(path, "test" , "Y_test.txt" ),header = FALSE)
